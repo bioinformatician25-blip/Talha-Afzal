@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Talha Afzal — Lecturer in Zoology and Bioinformatics & Fisheries researcher. Genomics, aquaculture, and animal biology." />
+  <title>Talha Afzal · Zoology & Bioinformatics</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- three.js (classic global build — works by double-clicking the file, no server needed) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+</head>
+<body>
+
+  <!-- ░░░ LOADING SCREEN ░░░ -->
+  <div id="loader" aria-hidden="true">
+    <div class="loader__helix">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <p class="loader__text">Sequencing portfolio<span class="dots">…</span></p>
+    <div class="loader__bar"><i></i></div>
+  </div>
+
+  <!-- ░░░ CUSTOM CURSOR ░░░ -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ░░░ PERSISTENT 3D BACKGROUND ░░░ -->
+  <canvas id="scene"></canvas>
+  <div class="scene-vignette" aria-hidden="true"></div>
+
+  <!-- ░░░ NAV ░░░ -->
+  <header class="nav">
+    <a href="#hero" class="nav__logo">
+      <span class="nav__logo-mark">⬡</span> T<span class="nav__logo-dot">.</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#projects">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav__cta">Let's talk</a>
+    <button class="nav__toggle" id="motionToggle" aria-pressed="false" title="Toggle 3D animation">
+      <span></span> Motion
+    </button>
+  </header>
+
+  <main>
+    <!-- ░░░ A. HERO ░░░ -->
+    <section id="hero" class="hero section">
+      <div class="hero__inner">
+        <p class="eyebrow reveal">Zoology · Bioinformatics · Fisheries Research</p>
+        <h1 class="hero__title">
+          <span class="reveal">Talha Afzal</span>
+          <span class="hero__sub reveal">Lecturer in Zoology &amp; Bioinformatics Researcher</span>
+        </h1>
+        <p class="hero__tag reveal">Understanding life from genes to ecosystems.</p>
+        <div class="hero__cta reveal">
+          <a href="#projects" class="btn btn--primary">Explore my research</a>
+          <a href="assets/CV.pdf" class="btn btn--ghost" download>Download CV</a>
+        </div>
+        <div class="hero__stats reveal">
+          <div class="stat"><b data-count="3">0</b><span>Publications</span></div>
+          <div class="stat"><b data-count="4">0</b><span>Certifications</span></div>
+          <div class="stat"><b data-count="4">0</b><span>Workshops</span></div>
+          <div class="stat"><b data-count="5">0</b><span>Years teaching</span></div>
+        </div>
+      </div>
+      <div class="hero__portrait reveal">
+        <img src="assets/portrait.png" alt="Portrait of Talha Afzal, Lecturer in Zoology and Bioinformatics researcher" />
+      </div>
+      <a href="#about" class="scroll-hint" aria-label="Scroll down">
+        <span class="basepair"><i class="a">A</i><i class="t">T</i></span>
+        <em>scroll</em>
+      </a>
+    </section>
+
+    <!-- ░░░ B. ABOUT ░░░ -->
+    <section id="about" class="section about">
+      <div class="section__head">
+        <span class="section__num">01</span>
+        <h2 class="reveal">Research focus</h2>
+      </div>
+      <div class="about__grid">
+        <div class="about__viz reveal" aria-hidden="true">
+          <svg viewBox="0 0 320 320" class="phylo">
+            <g class="phylo__lines" fill="none" stroke="var(--teal)" stroke-width="1.4">
+              <path d="M20,160 H90" />
+              <path d="M90,160 V70 M90,160 V250" />
+              <path d="M90,70 H160 M90,250 H160" />
+              <path d="M160,70 V40 M160,70 V110 M160,250 V210 M160,250 V290" />
+              <path d="M160,40 H240 M160,110 H240 M160,210 H240 M160,290 H240" />
+            </g>
+            <g class="phylo__tips" fill="var(--magenta)">
+              <circle cx="240" cy="40" r="5" /><circle cx="240" cy="110" r="5" />
+              <circle cx="240" cy="210" r="5" /><circle cx="240" cy="290" r="5" />
+              <circle cx="20" cy="160" r="6" fill="var(--amber)" />
+            </g>
+          </svg>
+          <div class="phylo__labels">
+            <span>Fisheries</span><span>Genomics</span>
+            <span>Ecology</span><span>Behaviour</span>
+          </div>
+        </div>
+        <div class="about__text">
+          <p class="reveal">I'm a Lecturer in Zoology with the Higher Education Department, Azad Jammu &amp;
+            Kashmir, teaching undergraduate courses spanning Animal Life, Genetics, Ecology, Parasitology,
+            Bacteriology &amp; Virology, and Fisheries since 2021.</p>
+          <p class="reveal">My research sits at the intersection of <b>fisheries biology, genomics and
+            bioinformatics</b> — from reproductive biology and captive-breeding of Rainbow Trout to
+            histopathology, animal behaviour, and applying computational and AI/ML approaches to biological
+            data. I hold an MS (Hons) in Zoology from the University of Poonch, Rawalakot.</p>
+          <ul class="about__list reveal">
+            <li><span>◆</span> Fisheries biology &amp; aquaculture (Rainbow Trout reproduction and rearing)</li>
+            <li><span>◆</span> Genomics, NGS transcriptomics &amp; bioinformatic analysis</li>
+            <li><span>◆</span> Animal behaviour, ecology &amp; histopathology</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░░ C. PROJECTS ░░░ -->
+    <section id="projects" class="section projects">
+      <div class="section__head">
+        <span class="section__num">02</span>
+        <h2 class="reveal">Research projects</h2>
+      </div>
+      <div class="filters reveal" id="filters">
+        <button class="chip is-active" data-filter="all">All</button>
+        <button class="chip" data-filter="fisheries">Fisheries</button>
+        <button class="chip" data-filter="aquaculture">Aquaculture</button>
+        <button class="chip" data-filter="behaviour">Behaviour</button>
+        <button class="chip" data-filter="toxicology">Toxicology</button>
+        <button class="chip" data-filter="ecology">Ecology</button>
+      </div>
+      <div class="cards" id="projectCards"><!-- injected by JS --></div>
+    </section>
+
+    <!-- ░░░ D. PUBLICATIONS ░░░ -->
+    <section id="publications" class="section pubs">
+      <div class="section__head">
+        <span class="section__num">03</span>
+        <h2 class="reveal">Publications</h2>
+      </div>
+      <div class="pubs__wrap">
+        <div class="pubs__net reveal">
+          <svg viewBox="0 0 360 300" id="citationNet" aria-hidden="true"></svg>
+          <p class="pubs__hint">Node size ∝ citations · click a paper →</p>
+        </div>
+        <ol class="pubs__list" id="pubList"><!-- injected by JS --></ol>
+      </div>
+    </section>
+
+    <!-- ░░░ E. SKILLS ░░░ -->
+    <section id="skills" class="section skills">
+      <div class="section__head">
+        <span class="section__num">04</span>
+        <h2 class="reveal">Skills &amp; stack</h2>
+      </div>
+      <div class="periodic" id="periodic"><!-- injected by JS --></div>
+      <div class="legend reveal">
+        <span><i style="--c:var(--teal)"></i> Programming</span>
+        <span><i style="--c:var(--magenta)"></i> Lab Techniques</span>
+        <span><i style="--c:var(--amber)"></i> Bioinformatics Tools</span>
+        <span><i style="--c:#8b5cf6"></i> Research Domains</span>
+      </div>
+    </section>
+
+    <!-- ░░░ F. CERTIFICATIONS ░░░ -->
+    <section id="certifications" class="section certifications">
+      <div class="section__head">
+        <span class="section__num">05</span>
+        <h2 class="reveal">Certifications &amp; achievements</h2>
+      </div>
+      <div class="cert-grid reveal" id="certGrid"><!-- injected by JS --></div>
+      <div class="workshops reveal">
+        <h3>Workshops &amp; training</h3>
+        <ul id="workshopList"><!-- injected by JS --></ul>
+      </div>
+    </section>
+
+    <!-- ░░░ G. CONTACT ░░░ -->
+    <section id="contact" class="section contact">
+      <div class="section__head">
+        <span class="section__num">06</span>
+        <h2 class="reveal">Get in touch</h2>
+      </div>
+      <div class="contact__grid">
+        <div class="contact__intro reveal">
+          <p>Have a dataset, a collaboration, or a hard biological question? Let a message dock with the membrane.</p>
+          <ul class="receptors">
+            <li><a href="#" data-copy="bioinformatician25227@gmail.com" class="receptor"><span>✉</span> Email <em>bioinformatician25227@gmail.com</em></a></li>
+            <li><a href="tel:+923327777263" class="receptor"><span>☎</span> Phone <em>+92 332 7777263</em></a></li>
+            <li><a href="https://www.linkedin.com/in/talha-afzal-61207033b" target="_blank" rel="noopener" class="receptor"><span>in</span> LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/talha_afzal001" target="_blank" rel="noopener" class="receptor"><span>◎</span> Instagram</a></li>
+          </ul>
+        </div>
+        <form class="contact__form reveal" id="contactForm" novalidate>
+          <label>Name<input type="text" name="name" required autocomplete="name" /></label>
+          <label>Email<input type="email" name="email" required autocomplete="email" /></label>
+          <label>Message<textarea name="message" rows="4" required></textarea></label>
+          <button type="submit" class="btn btn--primary">Dock message →</button>
+          <p class="form__status" id="formStatus" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Talha Afzal · Zoology &amp; Bioinformatics</span>
+    <span class="footer__seq">ATGCGGATCAGTGCATTGACCGTA…</span>
+  </footer>
+
+  <!-- classic scripts, load in order (work on file:// — no server needed) -->
+  <script src="js/data.js"></script>
+  <script src="js/scene.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
